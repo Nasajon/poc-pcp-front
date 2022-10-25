@@ -1,0 +1,16 @@
+targets:
+  $default:
+    builders:
+      slang_build_runner:
+        options:
+          base_locale: pt
+          fallback_strategy: base_locale
+          input_directory: assets/i18n
+          input_file_pattern: .i18n.json
+          string_interpolation: braces
+          output_directory: lib/presentation/i18n
+          output_file_name: i18n.g.dart
+          output_format: single_file
+          locale_handling: false
+          translation_class_visibility: public
+          namespaces: true

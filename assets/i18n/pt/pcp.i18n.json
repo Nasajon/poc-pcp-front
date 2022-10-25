@@ -1,0 +1,47 @@
+{
+  "gruposDeRecursos": {
+    "list": {
+      "title": "Busca de grupos de recursos",
+      "addItem": "Criar novo grupo",
+      "lastTitle": "Últimos grupos acessados"
+    },
+    "form": {
+      "titles": {
+        "create": "Novo grupo de recurso",
+        "edit": "Editar grupo de recurso"
+      },
+      "labels": {
+        "codigo": "Código",
+        "descricao": "Descrição",
+        "tipoDeRecurso": "Tipo de Recurso"
+      },
+      "message": {
+        "success": "Grupo de recurso criado com sucesso."
+      }
+    }
+  },
+  "recursos": {
+    "list": {
+      "title": "Busca de recursos",
+      "addItem": "Criar novo recurso",
+      "lastTitle": "Últimos recursos acessados"
+    },
+    "form": {
+      "titles": {
+        "create": "Novo recurso",
+        "edit": "Editar recurso"
+      }
+    }
+  },
+  "shared": {
+    "emptyList": {
+      "normal": "5",
+      "search": "Não há resultados para pesquisa",
+      "recent": "Não há itens recentes"
+    },
+    "searchHint": "Pesqusar por nome ou palavra-chave",
+    "back": "Voltar",
+    "create": "Criar",
+    "updade": "Atualizar"
+  }
+}
