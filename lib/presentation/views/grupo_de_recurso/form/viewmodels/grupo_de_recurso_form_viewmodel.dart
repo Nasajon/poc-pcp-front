@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_core/flutter_core.dart';
 import 'package:pcp/pcp.dart';
-import 'package:pcp/presentation/widgets/pcp_snack_bar.dart';
 
 class GrupoDeRecursoFormViewmodel extends ViewModel<GrupoDeRecursoFormState> {
   final IGetGrupoDeRecursoUsecase _getGrupoDeRecursoUsecase;
@@ -57,7 +56,9 @@ class GrupoDeRecursoFormViewmodel extends ViewModel<GrupoDeRecursoFormState> {
 
     final usecase = await _saveGrupoDeRecursoUsecase(grupoDeRecurso);
 
-    usecase.fold((l) => null, (r) {
+    usecase.fold((l) {
+      showSnackBar(context: context, text: l.toString());
+    }, (r) {
       Nav.pop();
 
       if (Nav.history.length == 1) {
@@ -65,7 +66,8 @@ class GrupoDeRecursoFormViewmodel extends ViewModel<GrupoDeRecursoFormState> {
       }
 
       showSnackBar(
-          context: context, text: tr.pcp.gruposDeRecursos.form.message.success);
+          context: context,
+          text: tr.pcp.gruposDeRecursos.form.messages.success);
     });
   }
 

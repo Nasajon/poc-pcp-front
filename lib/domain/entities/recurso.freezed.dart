@@ -19,7 +19,7 @@ mixin _$Recurso {
   String? get id => throw _privateConstructorUsedError;
   String get codigo => throw _privateConstructorUsedError;
   String get descricao => throw _privateConstructorUsedError;
-  TipoDeRecurso get tipo => throw _privateConstructorUsedError;
+  TipoDeRecurso? get tipo => throw _privateConstructorUsedError;
   GrupoDeRecurso? get grupoDeRecurso => throw _privateConstructorUsedError;
   double? get custoHora => throw _privateConstructorUsedError;
 
@@ -36,11 +36,11 @@ abstract class $RecursoCopyWith<$Res> {
       {String? id,
       String codigo,
       String descricao,
-      TipoDeRecurso tipo,
+      TipoDeRecurso? tipo,
       GrupoDeRecurso? grupoDeRecurso,
       double? custoHora});
 
-  $TipoDeRecursoCopyWith<$Res> get tipo;
+  $TipoDeRecursoCopyWith<$Res>? get tipo;
   $GrupoDeRecursoCopyWith<$Res>? get grupoDeRecurso;
 }
 
@@ -60,7 +60,7 @@ class _$RecursoCopyWithImpl<$Res, $Val extends Recurso>
     Object? id = freezed,
     Object? codigo = null,
     Object? descricao = null,
-    Object? tipo = null,
+    Object? tipo = freezed,
     Object? grupoDeRecurso = freezed,
     Object? custoHora = freezed,
   }) {
@@ -77,10 +77,10 @@ class _$RecursoCopyWithImpl<$Res, $Val extends Recurso>
           ? _value.descricao
           : descricao // ignore: cast_nullable_to_non_nullable
               as String,
-      tipo: null == tipo
+      tipo: freezed == tipo
           ? _value.tipo
           : tipo // ignore: cast_nullable_to_non_nullable
-              as TipoDeRecurso,
+              as TipoDeRecurso?,
       grupoDeRecurso: freezed == grupoDeRecurso
           ? _value.grupoDeRecurso
           : grupoDeRecurso // ignore: cast_nullable_to_non_nullable
@@ -94,8 +94,12 @@ class _$RecursoCopyWithImpl<$Res, $Val extends Recurso>
 
   @override
   @pragma('vm:prefer-inline')
-  $TipoDeRecursoCopyWith<$Res> get tipo {
-    return $TipoDeRecursoCopyWith<$Res>(_value.tipo, (value) {
+  $TipoDeRecursoCopyWith<$Res>? get tipo {
+    if (_value.tipo == null) {
+      return null;
+    }
+
+    return $TipoDeRecursoCopyWith<$Res>(_value.tipo!, (value) {
       return _then(_value.copyWith(tipo: value) as $Val);
     });
   }
@@ -124,12 +128,12 @@ abstract class _$$_RecursoCopyWith<$Res> implements $RecursoCopyWith<$Res> {
       {String? id,
       String codigo,
       String descricao,
-      TipoDeRecurso tipo,
+      TipoDeRecurso? tipo,
       GrupoDeRecurso? grupoDeRecurso,
       double? custoHora});
 
   @override
-  $TipoDeRecursoCopyWith<$Res> get tipo;
+  $TipoDeRecursoCopyWith<$Res>? get tipo;
   @override
   $GrupoDeRecursoCopyWith<$Res>? get grupoDeRecurso;
 }
@@ -147,7 +151,7 @@ class __$$_RecursoCopyWithImpl<$Res>
     Object? id = freezed,
     Object? codigo = null,
     Object? descricao = null,
-    Object? tipo = null,
+    Object? tipo = freezed,
     Object? grupoDeRecurso = freezed,
     Object? custoHora = freezed,
   }) {
@@ -164,10 +168,10 @@ class __$$_RecursoCopyWithImpl<$Res>
           ? _value.descricao
           : descricao // ignore: cast_nullable_to_non_nullable
               as String,
-      tipo: null == tipo
+      tipo: freezed == tipo
           ? _value.tipo
           : tipo // ignore: cast_nullable_to_non_nullable
-              as TipoDeRecurso,
+              as TipoDeRecurso?,
       grupoDeRecurso: freezed == grupoDeRecurso
           ? _value.grupoDeRecurso
           : grupoDeRecurso // ignore: cast_nullable_to_non_nullable
@@ -187,7 +191,7 @@ class _$_Recurso implements _Recurso {
       {this.id,
       required this.codigo,
       required this.descricao,
-      required this.tipo,
+      this.tipo,
       this.grupoDeRecurso,
       this.custoHora});
 
@@ -198,7 +202,7 @@ class _$_Recurso implements _Recurso {
   @override
   final String descricao;
   @override
-  final TipoDeRecurso tipo;
+  final TipoDeRecurso? tipo;
   @override
   final GrupoDeRecurso? grupoDeRecurso;
   @override
@@ -241,7 +245,7 @@ abstract class _Recurso implements Recurso {
       {final String? id,
       required final String codigo,
       required final String descricao,
-      required final TipoDeRecurso tipo,
+      final TipoDeRecurso? tipo,
       final GrupoDeRecurso? grupoDeRecurso,
       final double? custoHora}) = _$_Recurso;
 
@@ -252,7 +256,7 @@ abstract class _Recurso implements Recurso {
   @override
   String get descricao;
   @override
-  TipoDeRecurso get tipo;
+  TipoDeRecurso? get tipo;
   @override
   GrupoDeRecurso? get grupoDeRecurso;
   @override

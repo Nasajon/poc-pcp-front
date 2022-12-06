@@ -5,8 +5,8 @@ class PcpSearchFormField extends StatelessWidget {
   final String hintText;
 
   final _border = const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(6)),
-      borderSide: BorderSide(color: Color.fromRGBO(204, 204, 204, 1)));
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: Color(0xFF999999)));
   final _hintStyle = const TextStyle(
       fontStyle: FontStyle.italic,
       fontWeight: FontWeight.w400,
@@ -25,7 +25,6 @@ class PcpSearchFormField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
           border: _border,
-          enabledBorder: _border,
           hintText: hintText,
           hintStyle: _hintStyle,
           suffixIcon: const Icon(

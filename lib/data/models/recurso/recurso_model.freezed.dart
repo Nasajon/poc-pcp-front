@@ -22,8 +22,8 @@ RecursoModel _$RecursoModelFromJson(Map<String, dynamic> json) {
 mixin _$RecursoModel {
   String get codigo => throw _privateConstructorUsedError;
   String get descricao => throw _privateConstructorUsedError;
-  String get tipo => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
+  String? get tipo => throw _privateConstructorUsedError;
+  String? get recurso => throw _privateConstructorUsedError;
   int? get tenant => throw _privateConstructorUsedError;
   GrupoDeRecursoModel? get grupoDeRecurso => throw _privateConstructorUsedError;
   double? get custoHora => throw _privateConstructorUsedError;
@@ -43,8 +43,8 @@ abstract class $RecursoModelCopyWith<$Res> {
   $Res call(
       {String codigo,
       String descricao,
-      String tipo,
-      String? id,
+      String? tipo,
+      String? recurso,
       int? tenant,
       GrupoDeRecursoModel? grupoDeRecurso,
       double? custoHora});
@@ -67,8 +67,8 @@ class _$RecursoModelCopyWithImpl<$Res, $Val extends RecursoModel>
   $Res call({
     Object? codigo = null,
     Object? descricao = null,
-    Object? tipo = null,
-    Object? id = freezed,
+    Object? tipo = freezed,
+    Object? recurso = freezed,
     Object? tenant = freezed,
     Object? grupoDeRecurso = freezed,
     Object? custoHora = freezed,
@@ -82,13 +82,13 @@ class _$RecursoModelCopyWithImpl<$Res, $Val extends RecursoModel>
           ? _value.descricao
           : descricao // ignore: cast_nullable_to_non_nullable
               as String,
-      tipo: null == tipo
+      tipo: freezed == tipo
           ? _value.tipo
           : tipo // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recurso: freezed == recurso
+          ? _value.recurso
+          : recurso // ignore: cast_nullable_to_non_nullable
               as String?,
       tenant: freezed == tenant
           ? _value.tenant
@@ -129,8 +129,8 @@ abstract class _$$_RecursoModelCopyWith<$Res>
   $Res call(
       {String codigo,
       String descricao,
-      String tipo,
-      String? id,
+      String? tipo,
+      String? recurso,
       int? tenant,
       GrupoDeRecursoModel? grupoDeRecurso,
       double? custoHora});
@@ -152,8 +152,8 @@ class __$$_RecursoModelCopyWithImpl<$Res>
   $Res call({
     Object? codigo = null,
     Object? descricao = null,
-    Object? tipo = null,
-    Object? id = freezed,
+    Object? tipo = freezed,
+    Object? recurso = freezed,
     Object? tenant = freezed,
     Object? grupoDeRecurso = freezed,
     Object? custoHora = freezed,
@@ -167,13 +167,13 @@ class __$$_RecursoModelCopyWithImpl<$Res>
           ? _value.descricao
           : descricao // ignore: cast_nullable_to_non_nullable
               as String,
-      tipo: null == tipo
+      tipo: freezed == tipo
           ? _value.tipo
           : tipo // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recurso: freezed == recurso
+          ? _value.recurso
+          : recurso // ignore: cast_nullable_to_non_nullable
               as String?,
       tenant: freezed == tenant
           ? _value.tenant
@@ -197,8 +197,8 @@ class _$_RecursoModel extends _RecursoModel {
   const _$_RecursoModel(
       {required this.codigo,
       required this.descricao,
-      required this.tipo,
-      this.id,
+      this.tipo,
+      this.recurso,
       this.tenant,
       this.grupoDeRecurso,
       this.custoHora})
@@ -212,9 +212,9 @@ class _$_RecursoModel extends _RecursoModel {
   @override
   final String descricao;
   @override
-  final String tipo;
+  final String? tipo;
   @override
-  final String? id;
+  final String? recurso;
   @override
   final int? tenant;
   @override
@@ -224,7 +224,7 @@ class _$_RecursoModel extends _RecursoModel {
 
   @override
   String toString() {
-    return 'RecursoModel(codigo: $codigo, descricao: $descricao, tipo: $tipo, id: $id, tenant: $tenant, grupoDeRecurso: $grupoDeRecurso, custoHora: $custoHora)';
+    return 'RecursoModel(codigo: $codigo, descricao: $descricao, tipo: $tipo, recurso: $recurso, tenant: $tenant, grupoDeRecurso: $grupoDeRecurso, custoHora: $custoHora)';
   }
 
   @override
@@ -236,7 +236,7 @@ class _$_RecursoModel extends _RecursoModel {
             (identical(other.descricao, descricao) ||
                 other.descricao == descricao) &&
             (identical(other.tipo, tipo) || other.tipo == tipo) &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.recurso, recurso) || other.recurso == recurso) &&
             (identical(other.tenant, tenant) || other.tenant == tenant) &&
             (identical(other.grupoDeRecurso, grupoDeRecurso) ||
                 other.grupoDeRecurso == grupoDeRecurso) &&
@@ -246,7 +246,7 @@ class _$_RecursoModel extends _RecursoModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, codigo, descricao, tipo, id,
+  int get hashCode => Object.hash(runtimeType, codigo, descricao, tipo, recurso,
       tenant, grupoDeRecurso, custoHora);
 
   @JsonKey(ignore: true)
@@ -267,8 +267,8 @@ abstract class _RecursoModel extends RecursoModel {
   const factory _RecursoModel(
       {required final String codigo,
       required final String descricao,
-      required final String tipo,
-      final String? id,
+      final String? tipo,
+      final String? recurso,
       final int? tenant,
       final GrupoDeRecursoModel? grupoDeRecurso,
       final double? custoHora}) = _$_RecursoModel;
@@ -282,9 +282,9 @@ abstract class _RecursoModel extends RecursoModel {
   @override
   String get descricao;
   @override
-  String get tipo;
+  String? get tipo;
   @override
-  String? get id;
+  String? get recurso;
   @override
   int? get tenant;
   @override

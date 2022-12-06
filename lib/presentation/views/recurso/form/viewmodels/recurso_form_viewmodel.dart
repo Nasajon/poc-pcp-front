@@ -10,7 +10,8 @@ class RecursoFormViewmodel extends ViewModel<RecursoFormState> {
 
   TextEditingController codigoController = TextEditingController();
   TextEditingController descricaoController = TextEditingController();
-  late TipoDeRecurso tipoDeRecurso;
+  TextEditingController custoPorHoraController = TextEditingController();
+  TipoDeRecurso? tipoDeRecurso;
   GrupoDeRecurso? grupoDeRecurso;
 
   RecursoFormViewmodel(
@@ -44,6 +45,7 @@ class RecursoFormViewmodel extends ViewModel<RecursoFormState> {
     usecase.fold((l) => emit(state.copyWith(loading: false)), (recurso) {
       codigoController.text = recurso.codigo;
       descricaoController.text = recurso.descricao;
+      custoPorHoraController.text = recurso.custoHora.toString();
       tipoDeRecurso = recurso.tipo;
       grupoDeRecurso = recurso.grupoDeRecurso;
 
@@ -51,11 +53,20 @@ class RecursoFormViewmodel extends ViewModel<RecursoFormState> {
     });
   }
 
-  Future<void> save() async {
+  Future<List<GrupoDeRecurso>> getGruposDeRecursos(String? search) async {
+    final usecase = await _getGrupoDeRecursoListUsecase(search: search);
+
+    return usecase.fold((l) => List.empty(), (r) => r);
+  }
+
+  Future<void> save(BuildContext context) async {
     Recurso recurso = Recurso(
         id: state.recurso?.id,
         codigo: codigoController.value.text,
         descricao: descricaoController.value.text,
+        custoHora: custoPorHoraController.text.isNotEmpty
+            ? double.parse(custoPorHoraController.text)
+            : 0,
         tipo: tipoDeRecurso,
         grupoDeRecurso: grupoDeRecurso);
 
@@ -63,6 +74,13 @@ class RecursoFormViewmodel extends ViewModel<RecursoFormState> {
 
     usecase.fold((l) => null, (r) {
       Nav.pop();
+
+      if (Nav.history.length == 1) {
+        Nav.pushNamed(PcpRouting.recursos);
+      }
+
+      showSnackBar(
+          context: context, text: tr.pcp.recursos.form.messages.success);
     });
   }
 }

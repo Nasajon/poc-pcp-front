@@ -49,7 +49,7 @@ class RecursoRepository implements IRecursoRepository {
           ? datasource.updateRecurso(item.id!, model)
           : datasource.insertRecurso(model));
 
-      insertRecentItem(item);
+      await insertRecentItem(item);
 
       return Right(response);
     } catch (e) {

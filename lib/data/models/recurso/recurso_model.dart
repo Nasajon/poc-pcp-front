@@ -11,8 +11,8 @@ class RecursoModel with _$RecursoModel {
   const factory RecursoModel(
       {required String codigo,
       required String descricao,
-      required String tipo,
-      String? id,
+      String? tipo,
+      String? recurso,
       int? tenant,
       GrupoDeRecursoModel? grupoDeRecurso,
       double? custoHora}) = _RecursoModel;
@@ -22,10 +22,10 @@ class RecursoModel with _$RecursoModel {
 
   factory RecursoModel.fromEntity(Recurso recurso) {
     return RecursoModel(
-        id: recurso.id,
+        recurso: recurso.id,
         codigo: recurso.codigo,
         descricao: recurso.descricao,
-        tipo: recurso.tipo.valor,
+        tipo: recurso.tipo?.valor,
         grupoDeRecurso: GrupoDeRecursoModel.fromEntity(recurso.grupoDeRecurso!),
         custoHora: recurso.custoHora,
         tenant: 123);
@@ -33,9 +33,9 @@ class RecursoModel with _$RecursoModel {
 
   Recurso toEntity() {
     return Recurso(
-        id: id,
+        id: recurso,
         codigo: codigo,
         descricao: descricao,
-        tipo: TipoDeRecurso.fromEntity(tipo));
+        tipo: tipo != null ? TipoDeRecurso.fromEntity(tipo!) : null);
   }
 }

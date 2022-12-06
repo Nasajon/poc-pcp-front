@@ -14,19 +14,20 @@ class _RecursoListPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PcpAppBar(title: tr.pcp.recursos.list.title),
-      body: Container(
-        color: Colors.white,
-        child: Center(
+      appBar: AppBar(title: Text(tr.pcp.recursos.list.title)),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: Spacing.md.value),
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 635),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              padding: EdgeInsets.symmetric(
+                  vertical: Spacing.xxs.value + Spacing.sm.value),
               child: Column(children: [
                 PcpSearchFormField(
                     controller: viewModel.pesquisaController,
                     hintText: tr.pcp.shared.searchHint),
-                const SizedBox(height: 30),
+                Spacing.lg.vertical,
                 ViewModelBuilder<RecursoListViewmodel, RecursoListState>(
                   viewModel: viewModel,
                   buildWhen: (previous, current) =>
@@ -34,24 +35,25 @@ class _RecursoListPageState
                       previous.recursos != current.recursos,
                   builder: (context, state) {
                     if (state.loading) {
-                      return const Center(child: CircularProgressIndicator());
+                      return const Center(child: CircularLoading());
                     }
 
                     if (viewModel.pesquisaController.text.isEmpty) {
-                      return RecentList(viewmodel: viewModel, state: state);
+                      return _RecentList(viewmodel: viewModel, state: state);
                     }
 
                     if (state.recursos == null || state.recursos!.isEmpty) {
                       return Text(tr.pcp.shared.emptyList.search);
                     }
 
-                    return RecursoList(
+                    return _RecursoList(
                         viewmodel: viewModel, recursos: state.recursos!);
                   },
                 ),
-                const SizedBox(height: 80),
-                PcpPrimaryButton(
-                    text: tr.pcp.recursos.list.addItem,
+                Spacing.xl.vertical,
+                Spacing.xl.vertical,
+                ElevatedButton(
+                    child: Text(tr.pcp.recursos.list.addItem),
                     onPressed: () async {
                       await Nav.pushNamed(PcpRouting.recursosCreate);
 
@@ -66,11 +68,11 @@ class _RecursoListPageState
   }
 }
 
-class RecentList extends StatelessWidget {
+class _RecentList extends StatelessWidget {
   final RecursoListState state;
   final RecursoListViewmodel viewmodel;
 
-  const RecentList({Key? key, required this.state, required this.viewmodel})
+  const _RecentList({Key? key, required this.state, required this.viewmodel})
       : super(key: key);
 
   @override
@@ -79,25 +81,27 @@ class RecentList extends StatelessWidget {
       children: [
         Row(children: [
           Text(tr.pcp.recursos.list.lastTitle,
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
+              style: TextStyle(
+                  fontSize: AppFontSize.body1.value,
+                  fontWeight: AppFontWeight.bold.value,
                   fontFamily: 'PT Sans Narrow'))
         ]),
-        const SizedBox(height: 24),
+        Spacing.md.vertical,
         state.recentRecursos == null || state.recentRecursos!.isEmpty
             ? Text(tr.pcp.shared.emptyList.recent)
-            : RecursoList(viewmodel: viewmodel, recursos: state.recentRecursos!)
+            : _RecursoList(
+                viewmodel: viewmodel, recursos: state.recentRecursos!)
       ],
     );
   }
 }
 
-class RecursoList extends StatelessWidget {
+class _RecursoList extends StatelessWidget {
   final List<Recurso> recursos;
   final RecursoListViewmodel viewmodel;
 
-  const RecursoList({Key? key, required this.recursos, required this.viewmodel})
+  const _RecursoList(
+      {Key? key, required this.recursos, required this.viewmodel})
       : super(key: key);
 
   @override
@@ -106,17 +110,18 @@ class RecursoList extends StatelessWidget {
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       children: recursos
-          .map((recurso) => RecursoItem(viewmodel: viewmodel, recurso: recurso))
+          .map(
+              (recurso) => _RecursoItem(viewmodel: viewmodel, recurso: recurso))
           .toList(),
     );
   }
 }
 
-class RecursoItem extends StatelessWidget {
+class _RecursoItem extends StatelessWidget {
   final Recurso recurso;
   final RecursoListViewmodel viewmodel;
 
-  const RecursoItem({Key? key, required this.recurso, required this.viewmodel})
+  const _RecursoItem({Key? key, required this.recurso, required this.viewmodel})
       : super(key: key);
 
   @override
@@ -124,23 +129,21 @@ class RecursoItem extends StatelessWidget {
     return ListTile(
         title: Text(
           recurso.codigo,
-          style: const TextStyle(
-              fontSize: 14,
-              fontFamily: 'PT Sans',
-              fontWeight: FontWeight.w700,
-              height: 1.4,
-              color: Color(0xFF5A5A5A)),
+          style: TextStyle(
+            fontSize: AppFontSize.callout.value,
+            fontWeight: AppFontWeight.bold.value,
+            height: AppLineHeight.md.value,
+          ),
         ),
         subtitle: Text(recurso.descricao,
-            style: const TextStyle(
-                fontFamily: 'PT Sans',
-                fontSize: 12,
-                height: 1.2,
-                color: Color(0xFF999999))),
+            style: TextStyle(
+                fontSize: AppFontSize.caption.value,
+                height: AppLineHeight.sm.value,
+                color: context.colorPalette.base[400])),
         trailing: const Icon(Icons.chevron_right),
         onTap: () async {
           await Nav.pushNamed(
-            '${PcpRouting.grupoDeRecursos}/${recurso.id}',
+            '${PcpRouting.recursos}/${recurso.id}',
           );
 
           viewmodel.getRecentList();

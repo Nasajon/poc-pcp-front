@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 1
-/// Strings: 21
+/// Strings: 32
 ///
-/// Built on 2022-10-25 at 18:51 UTC
+/// Built on 2022-11-22 at 14:18 UTC
 
 
 // coverage:ignore-file
@@ -90,6 +90,7 @@ class I18nPcpGruposDeRecursosPt {
 	final I18nPt _root; // ignore: unused_field
 
 	// Translations
+	String get title => 'Grupos de recursos';
 	late final I18nPcpGruposDeRecursosListPt list = I18nPcpGruposDeRecursosListPt._(_root);
 	late final I18nPcpGruposDeRecursosFormPt form = I18nPcpGruposDeRecursosFormPt._(_root);
 }
@@ -101,6 +102,7 @@ class I18nPcpRecursosPt {
 	final I18nPt _root; // ignore: unused_field
 
 	// Translations
+	String get title => 'Recursos';
 	late final I18nPcpRecursosListPt list = I18nPcpRecursosListPt._(_root);
 	late final I18nPcpRecursosFormPt form = I18nPcpRecursosFormPt._(_root);
 }
@@ -112,10 +114,12 @@ class I18nPcpSharedPt {
 	final I18nPt _root; // ignore: unused_field
 
 	// Translations
-	late final I18nPcpSharedEmptyListPt emptyList = I18nPcpSharedEmptyListPt._(_root);
-	String get searchHint => 'Pesqusar por nome ou palavra-chave';
 	String get back => 'Voltar';
 	String get create => 'Criar';
+	late final I18nPcpSharedEmptyListPt emptyList = I18nPcpSharedEmptyListPt._(_root);
+	String get openApp => 'Abrir App';
+	String get requiredFields => '*Campos obrigatórios';
+	String get searchHint => 'Pesqusar por nome ou palavra-chave';
 	String get updade => 'Atualizar';
 }
 
@@ -127,7 +131,7 @@ class I18nPcpGruposDeRecursosListPt {
 
 	// Translations
 	String get title => 'Busca de grupos de recursos';
-	String get addItem => 'Criar novo grupo';
+	String get addItem => 'Criar grupo de recursos';
 	String get lastTitle => 'Últimos grupos acessados';
 }
 
@@ -140,7 +144,7 @@ class I18nPcpGruposDeRecursosFormPt {
 	// Translations
 	late final I18nPcpGruposDeRecursosFormTitlesPt titles = I18nPcpGruposDeRecursosFormTitlesPt._(_root);
 	late final I18nPcpGruposDeRecursosFormLabelsPt labels = I18nPcpGruposDeRecursosFormLabelsPt._(_root);
-	late final I18nPcpGruposDeRecursosFormMessagePt message = I18nPcpGruposDeRecursosFormMessagePt._(_root);
+	late final I18nPcpGruposDeRecursosFormMessagesPt messages = I18nPcpGruposDeRecursosFormMessagesPt._(_root);
 }
 
 // Path: pcp.recursos.list
@@ -151,7 +155,7 @@ class I18nPcpRecursosListPt {
 
 	// Translations
 	String get title => 'Busca de recursos';
-	String get addItem => 'Criar novo recurso';
+	String get addItem => 'Criar recurso';
 	String get lastTitle => 'Últimos recursos acessados';
 }
 
@@ -163,6 +167,8 @@ class I18nPcpRecursosFormPt {
 
 	// Translations
 	late final I18nPcpRecursosFormTitlesPt titles = I18nPcpRecursosFormTitlesPt._(_root);
+	late final I18nPcpRecursosFormLabelsPt labels = I18nPcpRecursosFormLabelsPt._(_root);
+	late final I18nPcpRecursosFormMessagesPt messages = I18nPcpRecursosFormMessagesPt._(_root);
 }
 
 // Path: pcp.shared.emptyList
@@ -184,7 +190,7 @@ class I18nPcpGruposDeRecursosFormTitlesPt {
 	final I18nPt _root; // ignore: unused_field
 
 	// Translations
-	String get create => 'Novo grupo de recurso';
+	String get create => 'Criar grupo de recursos';
 	String get edit => 'Editar grupo de recurso';
 }
 
@@ -200,9 +206,9 @@ class I18nPcpGruposDeRecursosFormLabelsPt {
 	String get tipoDeRecurso => 'Tipo de Recurso';
 }
 
-// Path: pcp.gruposDeRecursos.form.message
-class I18nPcpGruposDeRecursosFormMessagePt {
-	I18nPcpGruposDeRecursosFormMessagePt._(this._root);
+// Path: pcp.gruposDeRecursos.form.messages
+class I18nPcpGruposDeRecursosFormMessagesPt {
+	I18nPcpGruposDeRecursosFormMessagesPt._(this._root);
 
 	final I18nPt _root; // ignore: unused_field
 
@@ -217,8 +223,33 @@ class I18nPcpRecursosFormTitlesPt {
 	final I18nPt _root; // ignore: unused_field
 
 	// Translations
-	String get create => 'Novo recurso';
+	String get create => 'Criar recurso';
 	String get edit => 'Editar recurso';
+}
+
+// Path: pcp.recursos.form.labels
+class I18nPcpRecursosFormLabelsPt {
+	I18nPcpRecursosFormLabelsPt._(this._root);
+
+	final I18nPt _root; // ignore: unused_field
+
+	// Translations
+	String get codigo => 'Código*';
+	String get nome => 'Nome*';
+	String get grupoDeRecurso => 'Grupo de Recurso';
+	String get tipoDeRecurso => 'Tipo';
+	String get centroDeTrabalho => 'Centro de Trabalho';
+	String get custoPorHora => 'Custo por hora';
+}
+
+// Path: pcp.recursos.form.messages
+class I18nPcpRecursosFormMessagesPt {
+	I18nPcpRecursosFormMessagesPt._(this._root);
+
+	final I18nPt _root; // ignore: unused_field
+
+	// Translations
+	String get success => 'Recurso criado com sucesso.';
 }
 
 /// Flat map(s) containing all translations.
@@ -227,26 +258,37 @@ class I18nPcpRecursosFormTitlesPt {
 extension on I18nPt {
 	Map<String, dynamic> _buildFlatMap() {
 		return <String, dynamic>{
+			'pcp.gruposDeRecursos.title': 'Grupos de recursos',
 			'pcp.gruposDeRecursos.list.title': 'Busca de grupos de recursos',
-			'pcp.gruposDeRecursos.list.addItem': 'Criar novo grupo',
+			'pcp.gruposDeRecursos.list.addItem': 'Criar grupo de recursos',
 			'pcp.gruposDeRecursos.list.lastTitle': 'Últimos grupos acessados',
-			'pcp.gruposDeRecursos.form.titles.create': 'Novo grupo de recurso',
+			'pcp.gruposDeRecursos.form.titles.create': 'Criar grupo de recursos',
 			'pcp.gruposDeRecursos.form.titles.edit': 'Editar grupo de recurso',
 			'pcp.gruposDeRecursos.form.labels.codigo': 'Código',
 			'pcp.gruposDeRecursos.form.labels.descricao': 'Descrição',
 			'pcp.gruposDeRecursos.form.labels.tipoDeRecurso': 'Tipo de Recurso',
-			'pcp.gruposDeRecursos.form.message.success': 'Grupo de recurso criado com sucesso.',
+			'pcp.gruposDeRecursos.form.messages.success': 'Grupo de recurso criado com sucesso.',
+			'pcp.recursos.title': 'Recursos',
 			'pcp.recursos.list.title': 'Busca de recursos',
-			'pcp.recursos.list.addItem': 'Criar novo recurso',
+			'pcp.recursos.list.addItem': 'Criar recurso',
 			'pcp.recursos.list.lastTitle': 'Últimos recursos acessados',
-			'pcp.recursos.form.titles.create': 'Novo recurso',
+			'pcp.recursos.form.titles.create': 'Criar recurso',
 			'pcp.recursos.form.titles.edit': 'Editar recurso',
+			'pcp.recursos.form.labels.codigo': 'Código*',
+			'pcp.recursos.form.labels.nome': 'Nome*',
+			'pcp.recursos.form.labels.grupoDeRecurso': 'Grupo de Recurso',
+			'pcp.recursos.form.labels.tipoDeRecurso': 'Tipo',
+			'pcp.recursos.form.labels.centroDeTrabalho': 'Centro de Trabalho',
+			'pcp.recursos.form.labels.custoPorHora': 'Custo por hora',
+			'pcp.recursos.form.messages.success': 'Recurso criado com sucesso.',
+			'pcp.shared.back': 'Voltar',
+			'pcp.shared.create': 'Criar',
 			'pcp.shared.emptyList.normal': '5',
 			'pcp.shared.emptyList.search': 'Não há resultados para pesquisa',
 			'pcp.shared.emptyList.recent': 'Não há itens recentes',
+			'pcp.shared.openApp': 'Abrir App',
+			'pcp.shared.requiredFields': '*Campos obrigatórios',
 			'pcp.shared.searchHint': 'Pesqusar por nome ou palavra-chave',
-			'pcp.shared.back': 'Voltar',
-			'pcp.shared.create': 'Criar',
 			'pcp.shared.updade': 'Atualizar',
 		};
 	}

@@ -9,7 +9,7 @@ class Recurso with _$Recurso {
       {String? id,
       required String codigo,
       required String descricao,
-      required TipoDeRecurso tipo,
+      TipoDeRecurso? tipo,
       GrupoDeRecurso? grupoDeRecurso,
       double? custoHora}) = _Recurso;
 }

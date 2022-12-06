@@ -10,8 +10,8 @@ _$_RecursoModel _$$_RecursoModelFromJson(Map<String, dynamic> json) =>
     _$_RecursoModel(
       codigo: json['codigo'] as String,
       descricao: json['descricao'] as String,
-      tipo: json['tipo'] as String,
-      id: json['id'] as String?,
+      tipo: json['tipo'] as String?,
+      recurso: json['recurso'] as String?,
       tenant: json['tenant'] as int?,
       grupoDeRecurso: json['grupoDeRecurso'] == null
           ? null
@@ -25,7 +25,7 @@ Map<String, dynamic> _$$_RecursoModelToJson(_$_RecursoModel instance) =>
       'codigo': instance.codigo,
       'descricao': instance.descricao,
       'tipo': instance.tipo,
-      'id': instance.id,
+      'recurso': instance.recurso,
       'tenant': instance.tenant,
       'grupoDeRecurso': instance.grupoDeRecurso,
       'custoHora': instance.custoHora,

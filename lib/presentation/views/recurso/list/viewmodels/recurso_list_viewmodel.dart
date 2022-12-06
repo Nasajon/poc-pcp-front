@@ -25,6 +25,7 @@ class RecursoListViewmodel extends ViewModel<RecursoListState> {
         getList();
       } else {
         emit(state.copyWith(recursos: null));
+        getRecentList();
       }
     });
   }

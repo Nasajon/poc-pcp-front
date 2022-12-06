@@ -20,7 +20,7 @@ class _ProducaoDatasource implements ProducaoDatasource {
 
   @override
   Future<GrupoDeRecursoListModel> getGrupoDeRecursoList({
-    tenant = 123,
+    tenant = 1,
     search,
   }) async {
     const _extra = <String, dynamic>{};
@@ -51,7 +51,7 @@ class _ProducaoDatasource implements ProducaoDatasource {
   @override
   Future<GrupoDeRecursoModel> getGrupoDeRecurso(
     id, {
-    tenant = 123,
+    tenant = 1,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'tenant': tenant};
@@ -123,7 +123,7 @@ class _ProducaoDatasource implements ProducaoDatasource {
 
   @override
   Future<RecursoListModel> getRecursoList({
-    tenant = 123,
+    tenant = 1,
     search,
     grupoDeRecurso,
   }) async {
@@ -144,7 +144,7 @@ class _ProducaoDatasource implements ProducaoDatasource {
     )
             .compose(
               _dio.options,
-              '/recurso',
+              '/recursos',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -154,9 +154,12 @@ class _ProducaoDatasource implements ProducaoDatasource {
   }
 
   @override
-  Future<RecursoModel> getRecurso(id) async {
+  Future<RecursoModel> getRecurso(
+    id, {
+    tenant = 1,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'tenant': tenant};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -167,7 +170,7 @@ class _ProducaoDatasource implements ProducaoDatasource {
     )
             .compose(
               _dio.options,
-              '/recurso/${id}',
+              '/recursos/${id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -177,31 +180,29 @@ class _ProducaoDatasource implements ProducaoDatasource {
   }
 
   @override
-  Future<RecursoModel> insertRecurso(recurso) async {
+  Future<void> insertRecurso(recurso) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(recurso.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<RecursoModel>(Options(
+    await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/recurso',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = RecursoModel.fromJson(_result.data!);
-    return value;
+        .compose(
+          _dio.options,
+          '/recursos',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    return null;
   }
 
   @override
-  Future<RecursoModel> updateRecurso(
+  Future<void> updateRecurso(
     id,
     recurso,
   ) async {
@@ -210,21 +211,19 @@ class _ProducaoDatasource implements ProducaoDatasource {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(recurso.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<RecursoModel>(Options(
+    await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/recurso/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = RecursoModel.fromJson(_result.data!);
-    return value;
+        .compose(
+          _dio.options,
+          '/recursos/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    return null;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

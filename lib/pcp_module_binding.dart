@@ -11,8 +11,9 @@ class PcpModuleBinding {
       ];
 
   static List<Bind> get _datasourceBinds => [
-        Bind.lazySingleton<IProducaoDatasource>(
-            (i) => ProducaoDatasource(Dio(), baseUrl: dotenv.get('PCP'))),
+        Bind.lazySingleton<IProducaoDatasource>((i) => ProducaoDatasource(
+            Dio()..interceptors.add(ProducaoInterceptor()),
+            baseUrl: dotenv.get('PCP'))),
         Bind.lazySingleton<ILocalDatasource>((i) => LocalDatasource()),
       ];
 
